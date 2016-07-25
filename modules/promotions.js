@@ -1,8 +1,8 @@
 class Promotions {
 
-    constructor(type, barcode = []) {
+    constructor(type, barcodes = []) {
         this.type = type;
-        type.barcode = barcode;
+        this.barcodes = barcodes;
     }
 }
 
