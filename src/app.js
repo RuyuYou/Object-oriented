@@ -1,17 +1,15 @@
-const fixture = require('./fixtures');
-const loadPromotions = fixture.loadPromotions;
 const Item = require('../modules/items');
+const Promotion = require('../modules/promotions');
+
 const CartItem = require('../modules/cart-items');
 const ReceiptItem = require('../modules/receipt-items');
 const Receipt = require('../modules/receipt');
 
 function printReceipt(tags) {
 
-    //const allItems = loadAllItems();
     const cartItems = buildCartItems(tags, Item.all());
 
-    const allPromotions = loadPromotions();
-    const receiptItems = buildReceiptItems(cartItems, allPromotions);
+    const receiptItems = buildReceiptItems(cartItems, Promotion.all());
 
     const receipt = buildReceipt(receiptItems);
 
