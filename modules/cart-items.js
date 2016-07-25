@@ -16,9 +16,17 @@ class CartItem {
     getUnit() {
         return this.item.unit;
     }
-    
+
     getPrice() {
         return this.item.price;
+    }
+
+    getSubtotal() {
+        return this.item.price * this.count;
+    }
+
+    getSaved() {
+        return parseInt(this.count / 3) * this.item.price;
     }
 
     static buildCartItems(tags, allItems) {

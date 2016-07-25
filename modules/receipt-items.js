@@ -5,23 +5,23 @@ class ReceiptItem {
         this.saved = saved;
         this.subtotal = subtotal;
     }
-    
-    getBarcode () {
+
+    getBarcode() {
         return this.cartItem.getBarcode();
     }
-    
-    getName (){
+
+    getName() {
         return this.cartItem.getName();
     }
-    
+
     getUnit() {
         return this.cartItem.getUnit();
     }
-    
+
     getPrice() {
         return this.cartItem.getPrice();
     }
-    
+
     getCount() {
         return this.cartItem.count;
     }
@@ -37,20 +37,20 @@ class ReceiptItem {
             };
             const promotionType = findPromotionType(cartItem.getBarcode(), allPromotions);
 
-            const discount = (count, price, promotionType)=> {
+            const discount = (cartItem, promotionType)=> {
 
-                let subtotal = count * price;
+                let subtotal = cartItem.getSubtotal();
                 let saved = 0;
 
                 if (promotionType === 'BUY_TWO_GET_ONE_FREE') {
-                    saved = parseInt(count / 3) * price;
+                    saved = cartItem.getSaved();
                 }
 
                 subtotal -= saved;
 
                 return {saved, subtotal};
             };
-            const {saved, subtotal} = discount(cartItem.count, cartItem.getPrice(), promotionType);
+            const {saved, subtotal} = discount(cartItem, promotionType);
 
 
             return new ReceiptItem(cartItem, saved, subtotal);
