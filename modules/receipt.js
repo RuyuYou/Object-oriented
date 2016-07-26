@@ -1,5 +1,5 @@
 class Receipt {
-
+    //这是一个测试
     constructor(receiptItems = [], total = 0, savedTotal = 0) {
         this.receiptItems = receiptItems;
         this.total = total;
